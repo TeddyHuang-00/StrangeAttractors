@@ -1,21 +1,61 @@
-# Nuxt 3 Minimal Starter
+# Strange Attractors Visualizer
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A web application for visualizing strange attractors using TresJS.
+
+## Attractors
+
+- [ ] Lorenz Attractor ($\sigma = 10, \rho = 28, \beta = \frac{8}{3}$)
+  $$
+  \begin{aligned}
+  \dot{x} &= \sigma(y - x) \\
+  \dot{y} &= x(\rho - z) - y \\
+  \dot{z} &= xy - \beta z \\
+  \end{aligned}
+  $$
+- [ ] Rössler Attractor ($\alpha = 0.2, \beta = 0.2, \gamma = 5.7$)
+  $$
+  \begin{aligned}
+  \dot{x} &= -y - z \\
+  \dot{y} &= x + \alpha y \\
+  \dot{z} &= \beta + z(x - \gamma) \\
+  \end{aligned}
+  $$
+- [ ] Thomas Attractor ($\beta = 0.208186$)
+  $$
+  \begin{aligned}
+  \dot{x} &= \sin(y) - \beta x \\
+  \dot{y} &= \sin(z) - \beta y \\
+  \dot{z} &= \sin(x) - \beta z \\
+  \end{aligned}
+  $$
+- [ ] Aizawa Attractor ($\alpha = 0.095, \beta = 0.7, \gamma = 0.65, \delta = 3.5, \varepsilon = 0.1$)
+  $$
+  \begin{aligned}
+  \dot{x} &= (z - \beta)x - \delta y \\
+  \dot{y} &= \delta x + (z - \beta)y \\
+  \dot{z} &= \gamma + \alpha z - \frac{z^3}{3} + \varepsilon z x^3 \\
+  \end{aligned}
+  $$
+
+## Approximation Solver
+
+- [ ] Runge-Kutta 4th Order Method
+  $$
+  \begin{aligned}
+  \dot{y} &= f(y) \\
+  k_1 &= f(y_n) \\
+  k_2 &= f(y_n + \frac{h}{2}k_1) \\
+  k_3 &= f(y_n + \frac{h}{2}k_2) \\
+  k_4 &= f(y_n + hk_3) \\
+  y_{n+1} &= y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4) \\
+  \end{aligned}
+  $$
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
 # bun
 bun install
 ```
@@ -25,15 +65,6 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
 # bun
 bun run dev
 ```
@@ -43,15 +74,6 @@ bun run dev
 Build the application for production:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
 # bun
 bun run build
 ```
@@ -59,17 +81,17 @@ bun run build
 Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
 # bun
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Static Deployment
+
+Generate a static version of the application:
+
+```bash
+# bun
+bun run generate
+```
+
+This will generate a `dist` directory containing the static files that can be deployed to any static hosting service.

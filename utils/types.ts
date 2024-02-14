@@ -6,4 +6,5 @@ export type nameAttractor =
   | "thomas"
   | "luchen"
   | "dequanli"
-  | "newton";
+  | "newton"
+  | "nose";

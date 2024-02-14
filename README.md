@@ -44,6 +44,14 @@ A web application for visualizing strange attractors using TresJS.
   \dot{z} &= \beta z - 5 x y \\
   \end{aligned}
   $$
+- [x] Nosé-Hoover Attractor ($\alpha = 1.5$)
+  $$
+  \begin{aligned}
+  \dot{x} &= y \\
+  \dot{y} &= -x + y z \\
+  \dot{z} &= \alpha - y^2 \\
+  \end{aligned}
+  $$
 
 ## Approximation Solver
 

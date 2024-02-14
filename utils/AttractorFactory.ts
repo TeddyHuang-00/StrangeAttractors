@@ -14,6 +14,8 @@ export function getAttractor(name: nameAttractor): Attractor {
       return dequanLiAttractor();
     case "newton":
       return newtonLeipnikAttractor();
+    case "nose":
+      return noseHooverAttractor();
     default:
       return lorenzAttractor();
   }
@@ -81,4 +83,8 @@ function newtonLeipnikAttractor(a: number = 0.4, b: number = 0.175): Attractor {
     -x - a * y + 5 * x * z,
     b * z - 5 * x * y,
   ];
+}
+
+function noseHooverAttractor(a: number = 1.5): Attractor {
+  return ([x, y, z]: Vec3D) => [y, -x + z * y, a - y ** 2];
 }

@@ -66,6 +66,21 @@
             :step="0.01"
             color="gray"
           />
+          <UTooltip
+            text="Number of segments in the sphere for each point"
+            :popper="{ placement: 'right', arrow: true }"
+          >
+            <UBadge color="gray" variant="solid">
+              Detail level: {{ levelDetail }}
+            </UBadge>
+          </UTooltip>
+          <URange
+            :min="3"
+            :max="16"
+            v-model="levelDetail"
+            :step="1"
+            color="gray"
+          />
 
           <UDivider>
             <Icon name="material-symbols:keyboard" size="24" />
@@ -93,6 +108,7 @@ const isOpen = ref(false);
 const timeScale = useState("timeScale", () => 0.2);
 const numPoints = useState("numPoints", () => 500);
 const sizePoint = useState("sizePoint", () => 0.1);
+const levelDetail = useState("levelDetail", () => 6);
 
 onKeyStroke("Enter", () => (isOpen.value = !isOpen.value));
 const keyBindings = [

@@ -8,7 +8,7 @@
     <Camera />
     <Axes />
     <TresMesh :position="coord" v-for="(coord, i) in coords">
-      <TresSphereGeometry :args="[sizePoint, 4, 4]" />
+      <TresSphereGeometry :args="[sizePoint, levelDetail, levelDetail]" />
       <TresMeshToonMaterial :color="colors[i]" />
     </TresMesh>
   </TresCanvas>
@@ -19,6 +19,7 @@ const { value } = useControls("fpsgraph");
 const timeScale = useState("timeScale", () => 0.2);
 const numPoints = useState("numPoints", () => 500);
 const sizePoint = useState("sizePoint", () => 0.1);
+const levelDetail = useState("levelDetail", () => 6);
 
 const colors = ref([] as string[]);
 const coords = ref([] as Vec3D[]);

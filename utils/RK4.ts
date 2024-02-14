@@ -1,5 +1,4 @@
-import type { Attractor } from "./typeAttractor";
-import type { Vec3D } from "./typeVec";
+import type { Vec3D, Attractor } from "./types";
 
 function vecAdd(a: Vec3D, b: Vec3D): Vec3D {
   return a.map((ai, i) => ai + b[i]) as Vec3D;

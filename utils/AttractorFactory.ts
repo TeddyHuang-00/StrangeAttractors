@@ -1,5 +1,4 @@
-import type { Attractor } from "./typeAttractor";
-import type { Vec3D } from "./typeVec";
+import type { Vec3D, Attractor } from "./types";
 
 export function lorenzAttractor(
   sigma: number = 10,

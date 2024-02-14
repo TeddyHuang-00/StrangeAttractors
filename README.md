@@ -39,7 +39,7 @@ A web application for visualizing strange attractors using TresJS.
 
 ## Approximation Solver
 
-- [ ] Runge-Kutta 4th Order Method
+- [x] Runge-Kutta 4th Order Method
   $$
   \begin{aligned}
   \dot{y} &= f(y) \\

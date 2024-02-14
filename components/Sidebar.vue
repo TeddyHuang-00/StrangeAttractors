@@ -53,6 +53,11 @@
         </template>
 
         <template class="flex flex-col space-y-4">
+          <URadioGroup
+            v-model="selectedAttractor"
+            legend="Choose an attractor"
+            :options="attractors"
+          />
           <UTooltip
             text="Time step size used in solver"
             :popper="{ placement: 'right', arrow: true }"
@@ -123,8 +128,6 @@
               <UKbd>{{ row.key }}</UKbd>
             </template>
           </UTable>
-
-          <Placeholder class="h-full" />
         </template>
 
         <template #footer>
@@ -142,6 +145,22 @@
 
 <script setup lang="ts">
 const isOpen = ref(false);
+
+const attractors: { value: nameAttractor; label: string }[] = [
+  {
+    value: "lorenz",
+    label: "Lorenz",
+  },
+  {
+    value: "rossler",
+    label: "Rössler",
+  },
+];
+const selectedAttractor = useState(
+  "choiceAttractor",
+  () => "lorenz" as nameAttractor,
+);
+
 const timeScale = useState("timeScale", () => 0.2);
 const numPoints = useState("numPoints", () => 500);
 const sizePoint = useState("sizePoint", () => 0.1);

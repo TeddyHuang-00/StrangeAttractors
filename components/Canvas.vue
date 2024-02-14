@@ -20,6 +20,10 @@ const timeScale = useState("timeScale", () => 0.2);
 const numPoints = useState("numPoints", () => 500);
 const sizePoint = useState("sizePoint", () => 0.1);
 const levelDetail = useState("levelDetail", () => 6);
+const selectedAttractor = useState(
+  "choiceAttractor",
+  () => "lorenz" as nameAttractor,
+);
 
 const colors = ref([] as string[]);
 const coords = ref([] as Vec3D[]);
@@ -43,10 +47,13 @@ watchDebounced(
   },
   { debounce: 500, maxWait: 1000 },
 );
-
 onKeyStroke("r", initCoords);
 
-const lorenz = lorenzAttractor();
+let attractor = getAttractor(selectedAttractor.value);
+watch(selectedAttractor, () => {
+  attractor = getAttractor(selectedAttractor.value);
+  initCoords();
+});
 
 const { onLoop } = useRenderLoop();
 const [isPaused, togglePause] = useToggle(false);
@@ -54,7 +61,7 @@ onKeyStroke(" ", () => togglePause());
 onLoop(({ delta, elapsed, clock }) => {
   if (isPaused.value) return;
   coords.value = coords.value.map((coord) =>
-    RK4(coord, lorenz, delta * timeScale.value),
+    RK4(coord, attractor, delta * timeScale.value),
   );
 });
 </script>

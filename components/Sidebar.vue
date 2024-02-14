@@ -166,12 +166,7 @@ const numPoints = useState("numPoints", () => 500);
 const sizePoint = useState("sizePoint", () => 0.1);
 const levelDetail = useState("levelDetail", () => 6);
 
-onKeyStroke("Enter", () => (isOpen.value = !isOpen.value));
 const keyBindings = [
-  {
-    key: "Enter",
-    description: "Toggle sidebar",
-  },
   {
     key: "Space",
     description: "Pause/Resume simulation",

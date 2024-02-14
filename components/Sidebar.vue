@@ -175,6 +175,10 @@ const attractors: { value: nameAttractor; label: string }[] = [
     value: "dequanli",
     label: "Dequan Li",
   },
+  {
+    value: "newton",
+    label: "Newton-Leipnik",
+  },
 ];
 const selectedAttractor = useState(
   "choiceAttractor",

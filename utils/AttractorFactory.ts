@@ -12,6 +12,8 @@ export function getAttractor(name: nameAttractor): Attractor {
       return luChenAttractor();
     case "dequanli":
       return dequanLiAttractor();
+    case "newton":
+      return newtonLeipnikAttractor();
     default:
       return lorenzAttractor();
   }
@@ -70,5 +72,13 @@ function dequanLiAttractor(
     a * (y - x) + c * x * z,
     e * x + f * y - x * z,
     b * z + x * y - d * x ** 2,
+  ];
+}
+
+function newtonLeipnikAttractor(a: number = 0.4, b: number = 0.175): Attractor {
+  return ([x, y, z]: Vec3D) => [
+    y - a * x + 10 * y * z,
+    -x - a * y + 5 * x * z,
+    b * z - 5 * x * y,
   ];
 }

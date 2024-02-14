@@ -36,6 +36,14 @@ A web application for visualizing strange attractors using TresJS.
   \dot{z} &= \beta z + x y - \delta x^2 \\
   \end{aligned}
   $$
+- [x] Newton-Leipnik Attractor ($\alpha = 0.4, \beta = 0.175$)
+  $$
+  \begin{aligned}
+  \dot{x} &= y - \alpha x + 10 y z \\
+  \dot{y} &= -x - \alpha y + 5 x z \\
+  \dot{z} &= \beta z - 5 x y \\
+  \end{aligned}
+  $$
 
 ## Approximation Solver
 

@@ -28,12 +28,12 @@ A web application for visualizing strange attractors using TresJS.
   \dot{z} &= \sin(x) - \beta z \\
   \end{aligned}
   $$
-- [ ] Aizawa Attractor ($\alpha = 0.095, \beta = 0.7, \gamma = 0.65, \delta = 3.5, \varepsilon = 0.1$)
+- [x] Lu Chen Attractor ($\alpha = 36, \beta = 3, \gamma = 20, \upsilon = -15.15$)
   $$
   \begin{aligned}
-  \dot{x} &= (z - \beta)x - \delta y \\
-  \dot{y} &= \delta x + (z - \beta)y \\
-  \dot{z} &= \gamma + \alpha z - \frac{z^3}{3} + \varepsilon z x^3 \\
+  \dot{x} &= \alpha(y - x) \\
+  \dot{y} &= x(1 - z) + \gamma y + \upsilon \\
+  \dot{z} &= x y - \beta z \\
   \end{aligned}
   $$
 

@@ -108,6 +108,10 @@ const keyBindings = [
     key: "R",
     description: "Reset simulation",
   },
+  {
+    key: "H",
+    description: "Toggle axes",
+  },
 ];
 </script>
 

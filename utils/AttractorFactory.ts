@@ -6,6 +6,8 @@ export function getAttractor(name: nameAttractor): Attractor {
       return lorenzAttractor();
     case "rossler":
       return rosslerAttractor();
+    case "thomas":
+      return thomasAttractor();
     default:
       return lorenzAttractor();
   }
@@ -29,4 +31,12 @@ function rosslerAttractor(
   gamma: number = 14,
 ): Attractor {
   return ([x, y, z]: Vec3D) => [-y - z, x + alpha * y, beta + z * (x - gamma)];
+}
+
+function thomasAttractor(beta: number = 0.208186): Attractor {
+  return ([x, y, z]: Vec3D) => [
+    -beta * x + Math.sin(y),
+    -beta * y + Math.sin(z),
+    -beta * z + Math.sin(x),
+  ];
 }

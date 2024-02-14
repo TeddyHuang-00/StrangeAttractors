@@ -163,6 +163,10 @@ const attractors: { value: nameAttractor; label: string }[] = [
     value: "rossler",
     label: "Rössler",
   },
+  {
+    value: "thomas",
+    label: "Thomas",
+  },
 ];
 const selectedAttractor = useState(
   "choiceAttractor",

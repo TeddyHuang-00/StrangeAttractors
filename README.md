@@ -20,7 +20,7 @@ A web application for visualizing strange attractors using TresJS.
   \dot{z} &= \beta + z(x - \gamma) \\
   \end{aligned}
   $$
-- [ ] Thomas Attractor ($\beta = 0.208186$)
+- [x] Thomas Attractor ($\beta = 0.208186$)
   $$
   \begin{aligned}
   \dot{x} &= \sin(y) - \beta x \\

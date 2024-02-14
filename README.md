@@ -4,7 +4,7 @@ A web application for visualizing strange attractors using TresJS.
 
 ## Attractors
 
-- [ ] Lorenz Attractor ($\sigma = 10, \rho = 28, \beta = \frac{8}{3}$)
+- [x] Lorenz Attractor ($\sigma = 10, \rho = 28, \beta = \frac{8}{3}$)
   $$
   \begin{aligned}
   \dot{x} &= \sigma(y - x) \\

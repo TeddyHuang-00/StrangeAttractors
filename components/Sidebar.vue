@@ -55,15 +55,20 @@
         <template class="flex flex-col space-y-4">
           <URadioGroup
             v-model="selectedAttractor"
-            legend="Choose an attractor"
             :options="attractors"
-          />
+            color="gray"
+          >
+            <template #legend>
+              <p class="text-base">Choose an attractor</p>
+            </template>
+          </URadioGroup>
           <UTooltip
             text="Time step size used in solver"
             :popper="{ placement: 'right', arrow: true }"
           >
-            <UBadge color="gray" variant="solid">
-              Timescale: {{ timeScale }}
+            Timescale:
+            <UBadge color="gray" variant="solid" class="mx-1">
+              {{ timeScale }}
             </UBadge>
           </UTooltip>
           <URange
@@ -77,8 +82,9 @@
             text="Number of points in the simulation"
             :popper="{ placement: 'right', arrow: true }"
           >
-            <UBadge color="gray" variant="solid">
-              Point number: {{ numPoints }}
+            Point number:
+            <UBadge color="gray" variant="solid" class="mx-1">
+              {{ numPoints }}
             </UBadge>
           </UTooltip>
           <URange
@@ -92,8 +98,9 @@
             text="Sphere radius for each point"
             :popper="{ placement: 'right', arrow: true }"
           >
-            <UBadge color="gray" variant="solid">
-              Point size: {{ sizePoint }}
+            Point size:
+            <UBadge color="gray" variant="solid" class="mx-1">
+              {{ sizePoint }}
             </UBadge>
           </UTooltip>
           <URange
@@ -107,8 +114,9 @@
             text="Number of segments in the sphere for each point"
             :popper="{ placement: 'right', arrow: true }"
           >
-            <UBadge color="gray" variant="solid">
-              Detail level: {{ levelDetail }}
+            Detail level:
+            <UBadge color="gray" variant="solid" class="mx-1">
+              {{ levelDetail }}
             </UBadge>
           </UTooltip>
           <URange

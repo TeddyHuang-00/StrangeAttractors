@@ -17,7 +17,39 @@
         }"
       >
         <template #header>
-          <Placeholder class="h-8" />
+          <div class="flex flex-row items-center gap-3 mb-2">
+            <UAvatar src="https://github.com/TeddyHuang-00.png" alt="Avatar" />
+            <b>TeddyHuang-00</b>
+          </div>
+          <p>
+            Strange Attractors is a tiny project to visualize the strange
+            attractors in 3D space.
+          </p>
+          <p>
+            If you got interested, please give it a star on
+            <ULink
+              to="https://github.com/TeddyHuang-00/StrangeAttractors"
+              target="_blank"
+              active-class="text-white"
+              inactive-class="text-violet-500 hover:text-violet-200"
+              class="whitespace-nowrap"
+            >
+              <Icon name="grommet-icons:github" size="16" class="mb-1" />
+              GitHub
+            </ULink>
+            . Or check out my blog at
+            <ULink
+              to="https://teddyhuang-00.github.io/"
+              target="_blank"
+              active-class="text-white"
+              inactive-class="text-pink-500 hover:text-pink-200"
+              class="whitespace-nowrap"
+            >
+              <Icon name="bx:bx-link-external" size="16" class="mb-1" />
+              teddyhuang-00.github.io
+            </ULink>
+            .
+          </p>
         </template>
 
         <template class="flex flex-col space-y-4">
@@ -96,7 +128,12 @@
         </template>
 
         <template #footer>
-          <TresLeches class="w-fit mx-auto" />
+          <div class="flex flex-col gap-1">
+            <TresLeches />
+            <p class="text-sm text-gray-400">
+              Built with Nuxt and TresJS. Shared under MIT license.
+            </p>
+          </div>
         </template>
       </UCard>
     </USlideover>

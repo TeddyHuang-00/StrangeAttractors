@@ -10,6 +10,8 @@ export function getAttractor(name: nameAttractor): Attractor {
       return thomasAttractor();
     case "luchen":
       return luChenAttractor();
+    case "dequanli":
+      return dequanLiAttractor();
     default:
       return lorenzAttractor();
   }
@@ -53,5 +55,20 @@ function luChenAttractor(
     a * (y - x),
     (1 - z) * x + c * y + u,
     x * y - b * z,
+  ];
+}
+
+function dequanLiAttractor(
+  a: number = 40,
+  b: number = 11 / 6,
+  c: number = 0.16,
+  d: number = 0.65,
+  e: number = 55,
+  f: number = 20,
+): Attractor {
+  return ([x, y, z]: Vec3D) => [
+    a * (y - x) + c * x * z,
+    e * x + f * y - x * z,
+    b * z + x * y - d * x ** 2,
   ];
 }

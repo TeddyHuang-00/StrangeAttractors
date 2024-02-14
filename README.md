@@ -12,7 +12,7 @@ A web application for visualizing strange attractors using TresJS.
   \dot{z} &= xy - \beta z \\
   \end{aligned}
   $$
-- [ ] Rössler Attractor ($\alpha = 0.2, \beta = 0.2, \gamma = 5.7$)
+- [x] Rössler Attractor ($\alpha = 0.1, \beta = 0.1, \gamma = 14$)
   $$
   \begin{aligned}
   \dot{x} &= -y - z \\

@@ -54,7 +54,7 @@
 
         <template class="flex flex-col space-y-4">
           <URadioGroup
-            v-model="selectedAttractor"
+            v-model="attrctrSelection"
             :options="attractors"
             color="gray"
           >
@@ -68,13 +68,13 @@
           >
             Timescale:
             <UBadge color="gray" variant="solid" class="mx-1">
-              {{ timeScale }}
+              {{ timeSpeed }}
             </UBadge>
           </UTooltip>
           <URange
             :min="0.0"
             :max="1.0"
-            v-model="timeScale"
+            v-model="timeSpeed"
             :step="0.01"
             color="gray"
           />
@@ -84,13 +84,13 @@
           >
             Point number:
             <UBadge color="gray" variant="solid" class="mx-1">
-              {{ numPoints }}
+              {{ pointNumber }}
             </UBadge>
           </UTooltip>
           <URange
             :min="10"
             :max="10000"
-            v-model="numPoints"
+            v-model="pointNumber"
             :step="10"
             color="gray"
           />
@@ -100,13 +100,13 @@
           >
             Point size:
             <UBadge color="gray" variant="solid" class="mx-1">
-              {{ sizePoint }}
+              {{ pointSize }}
             </UBadge>
           </UTooltip>
           <URange
             :min="0.01"
             :max="1"
-            v-model="sizePoint"
+            v-model="pointSize"
             :step="0.01"
             color="gray"
           />
@@ -116,13 +116,13 @@
           >
             Detail level:
             <UBadge color="gray" variant="solid" class="mx-1">
-              {{ levelDetail }}
+              {{ detailLevel }}
             </UBadge>
           </UTooltip>
           <URange
             :min="3"
             :max="16"
-            v-model="levelDetail"
+            v-model="detailLevel"
             :step="1"
             color="gray"
           />
@@ -184,15 +184,12 @@ const attractors: { value: nameAttractor; label: string }[] = [
     label: "Nosé-Hoover",
   },
 ];
-const selectedAttractor = useState(
-  "choiceAttractor",
-  () => "lorenz" as nameAttractor,
-);
+const attrctrSelection = useAttractorSelection();
 
-const timeScale = useState("timeScale", () => 0.2);
-const numPoints = useState("numPoints", () => 500);
-const sizePoint = useState("sizePoint", () => 0.1);
-const levelDetail = useState("levelDetail", () => 6);
+const timeSpeed = useTimeSpeed();
+const pointNumber = usePointNumber();
+const pointSize = usePointSize();
+const detailLevel = useDetailLevel();
 
 const keyBindings = [
   {

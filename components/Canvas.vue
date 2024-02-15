@@ -8,7 +8,7 @@
     <Camera />
     <Axes />
     <TresMesh :position="coord" v-for="(coord, i) in coords">
-      <TresSphereGeometry :args="[sizePoint, levelDetail, levelDetail]" />
+      <TresSphereGeometry :args="[pointSize, detailLevel, detailLevel]" />
       <TresMeshToonMaterial :color="colors[i]" />
     </TresMesh>
   </TresCanvas>
@@ -16,31 +16,28 @@
 
 <script setup lang="ts">
 const { value } = useControls("fpsgraph");
-const timeScale = useState("timeScale", () => 0.2);
-const numPoints = useState("numPoints", () => 500);
-const sizePoint = useState("sizePoint", () => 0.1);
-const levelDetail = useState("levelDetail", () => 6);
-const selectedAttractor = useState(
-  "choiceAttractor",
-  () => "lorenz" as nameAttractor,
-);
+const timeSpeed = useTimeSpeed();
+const pointNumber = usePointNumber();
+const pointSize = usePointSize();
+const detailLevel = useDetailLevel();
+const attrctrSelection = useAttractorSelection();
 
 const colors = ref([] as string[]);
 const coords = ref([] as Vec3D[]);
 const initColor = () =>
-  (colors.value = randomArray([numPoints.value], () =>
+  (colors.value = randomArray([pointNumber.value], () =>
     randomColor(),
   ) as string[]);
 const initCoords = () =>
-  (coords.value = randomArray([numPoints.value, 3], () =>
-    randomNumber(-25, 25),
+  (coords.value = randomArray([pointNumber.value, 3], () =>
+    randomNumber(-5, 5),
   ) as Vec3D[]);
 onMounted(() => {
   initColor();
   initCoords();
 });
 watchDebounced(
-  numPoints,
+  pointNumber,
   () => {
     initCoords();
     initColor();
@@ -49,9 +46,9 @@ watchDebounced(
 );
 onKeyStroke("r", initCoords);
 
-let attractor = getAttractor(selectedAttractor.value);
-watch(selectedAttractor, () => {
-  attractor = getAttractor(selectedAttractor.value);
+let attractor = getAttractor(attrctrSelection.value);
+watch(attrctrSelection, () => {
+  attractor = getAttractor(attrctrSelection.value);
   initCoords();
 });
 
@@ -61,7 +58,7 @@ onKeyStroke(" ", () => togglePause());
 onLoop(({ delta, elapsed, clock }) => {
   if (isPaused.value) return;
   coords.value = coords.value.map((coord) =>
-    RK4(coord, attractor, delta * timeScale.value),
+    RK4(coord, attractor, delta * timeSpeed.value),
   );
 });
 </script>

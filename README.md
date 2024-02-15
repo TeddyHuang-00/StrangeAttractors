@@ -52,6 +52,38 @@ A web application for visualizing strange attractors using TresJS.
   \dot{z} &= \alpha - y^2 \\
   \end{aligned}
   $$
+- [ ] Halvorsen Attractor ($\alpha = 1.4$)
+  $$
+  \begin{aligned}
+  \dot{x} &= -\alpha x - 4 y - 4 z - y^2 \\
+  \dot{y} &= -\alpha y - 4 z - 4 x - z^2 \\
+  \dot{z} &= -\alpha z - 4 x - 4 y - x^2 \\
+  \end{aligned}
+  $$
+- [ ] Chen-Lee Attractor ($\alpha = 5, \beta = -10, \gamma = -0.38$)
+  $$
+  \begin{aligned}
+  \dot{x} &= \alpha x - y z \\
+  \dot{y} &= \beta y + x z \\
+  \dot{z} &= \gamma z + \frac{1}{3} x y \\
+  \end{aligned}
+  $$
+- [ ] Bouali Attractor ($\alpha = 0.3, \beta = 10$)
+  $$
+  \begin{aligned}
+  \dot{x} &= x (4 - y) + \alpha z \\
+  \dot{y} &= -y (1 - x^2) \\
+  \dot{z} &= -x (1.5 - \beta z) - 0.05 z \\
+  \end{aligned}
+  $$
+- [ ] Finance Attractor ($\alpha = 0.001, \beta = 0.2, \gamma = 1.1$)
+  $$
+  \begin{aligned}
+  \dot{x} &= \left(\frac{1}{\beta} - \alpha\right) x + z + x y \\
+  \dot{y} &= -\beta y - x^2 \\
+  \dot{z} &= -\gamma z - x \\
+  \end{aligned}
+  $$
 
 ## Approximation Solver
 

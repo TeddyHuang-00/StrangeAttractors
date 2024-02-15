@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "wasm": "wasm-pack build ./attractors --release --target web && mkdir -p ./public/_nuxt && (rm -f ./public/_nuxt/*.wasm || true) && cp ./attractors/pkg/*.wasm ./public/_nuxt/",
+    "rust-check": "cd attractors && cargo fmt --all -- --check && cargo clippy --all-targets --all-features -- -D warnings"
   },
   "dependencies": {
     "nuxt": "^3.10.2",

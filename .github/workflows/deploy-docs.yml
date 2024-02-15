@@ -27,16 +27,25 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 安装 Rust
+        uses: dtolnay/rust-toolchain@v1
+        with:
+          toolchain: stable
+
       - name: 安装 Bun
         uses: oven-sh/setup-bun@v1
 
       - name: 安装依赖
-        run: bun install --frozen-lockfile
+        run: |
+          cargo install wasm-pack
+          bun install --frozen-lockfile
 
       - name: 构建文档
         env:
           NODE_OPTIONS: --max_old_space_size=8192
-        run: bun generate
+        run: |
+          bun wasm
+          bun generate
 
       - name: 设置 Pages
         uses: actions/configure-pages@v4

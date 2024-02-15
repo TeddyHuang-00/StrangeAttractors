@@ -9,6 +9,7 @@ function vecScale(a: Vec3D, s: number): Vec3D {
 }
 
 export default function (x: Vec3D, f: Attractor, dt: number = 1.0) {
+  dt = Math.min(dt, 0.04); // limit the maximum dt to avoid numerical instability
   const k1 = f(x);
   const k2 = f(vecAdd(x, vecScale(k1, 0.5 * dt)));
   const k3 = f(vecAdd(x, vecScale(k2, 0.5 * dt)));

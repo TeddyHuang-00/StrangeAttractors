@@ -80,6 +80,22 @@
             color="gray"
           />
           <UTooltip
+            text="Range of uniform distribution of initial points"
+            :popper="{ placement: 'right', arrow: true }"
+          >
+            Initial range:
+            <UBadge color="gray" variant="solid" class="mx-1">
+              {{ initRange }}
+            </UBadge>
+          </UTooltip>
+          <URange
+            :min="1"
+            :max="100"
+            v-model="initRange"
+            :step="1"
+            color="gray"
+          />
+          <UTooltip
             text="Number of points in the simulation"
             :popper="{ placement: 'right', arrow: true }"
           >
@@ -153,6 +169,8 @@
 </template>
 
 <script setup lang="ts">
+import { useInitialRange } from "~/composables/useStates";
+
 const isOpen = ref(false);
 
 const attractors: { value: nameAttractor; label: string }[] = [
@@ -188,6 +206,7 @@ const attractors: { value: nameAttractor; label: string }[] = [
 const attrctrSelection = useAttractorSelection();
 
 const timeSpeed = useTimeSpeed();
+const initRange = useInitialRange();
 const pointNumber = usePointNumber();
 const pointSize = usePointSize();
 const detailLevel = useDetailLevel();

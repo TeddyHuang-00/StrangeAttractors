@@ -17,6 +17,7 @@
 <script setup lang="ts">
 const { value } = useControls("fpsgraph");
 const timeSpeed = useTimeSpeed();
+const initRange = useInitialRange();
 const pointNumber = usePointNumber();
 const pointSize = usePointSize();
 const detailLevel = useDetailLevel();
@@ -30,7 +31,7 @@ const initColor = () =>
   ) as string[]);
 const initCoords = () =>
   (coords.value = randomArray([pointNumber.value, 3], () =>
-    randomNumber(-5, 5),
+    randomNumber(-initRange.value, initRange.value),
   ) as Vec3D[]);
 onMounted(() => {
   initColor();
@@ -57,9 +58,9 @@ const [isPaused, togglePause] = useToggle(false);
 onKeyStroke(" ", () => togglePause());
 onLoop(({ delta, elapsed, clock }) => {
   if (isPaused.value) return;
-  coords.value = coords.value.map((coord) =>
-    RK4(coord, attractor, delta * timeSpeed.value),
-  );
+  coords.value.forEach((coord, i) => {
+    coords.value[i] = RK4(coord, attractor, delta * timeSpeed.value);
+  });
 });
 </script>
 

@@ -7,7 +7,7 @@
       @click="isOpen = true"
     />
 
-    <USlideover v-model="isOpen">
+    <USlideover v-model="isOpen" class="h-screen overflow-y-scroll">
       <UCard
         class="flex flex-col flex-1"
         :ui="{
@@ -26,7 +26,7 @@
             attractors in 3D space.
           </p>
           <p>
-            If you got interested, please give it a star on
+            Please consider giving it a star on
             <ULink
               to="https://github.com/TeddyHuang-00/StrangeAttractors"
               target="_blank"
@@ -37,7 +37,8 @@
               <Icon name="grommet-icons:github" size="16" class="mb-1" />
               GitHub
             </ULink>
-            . Or check out my blog at
+            .<br />
+            Or, check out my blog at
             <ULink
               to="https://teddyhuang-00.github.io/"
               target="_blank"
@@ -45,7 +46,7 @@
               inactive-class="text-pink-500 hover:text-pink-200"
               class="whitespace-nowrap"
             >
-              <Icon name="bx:bx-link-external" size="16" class="mb-1" />
+              <Icon name="bx:bx-link-external" size="16" class="mb-0.5" />
               teddyhuang-00.github.io
             </ULink>
             .

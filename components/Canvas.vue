@@ -7,10 +7,12 @@
   >
     <Camera />
     <Axes />
-    <TresMesh :position="coord" v-for="(coord, i) in coords">
-      <TresSphereGeometry :args="[pointSize, detailLevel, detailLevel]" />
-      <TresMeshToonMaterial :color="colors[i]" />
-    </TresMesh>
+    <TresGroup v-if="rawCoords.length > 0">
+      <TresMesh :position="convertCoords(i) as Vec3D" v-for="i in indices">
+        <TresSphereGeometry :args="[pointSize, detailLevel, detailLevel]" />
+        <TresMeshToonMaterial :color="colors[i]" />
+      </TresMesh>
+    </TresGroup>
   </TresCanvas>
 </template>
 
@@ -24,42 +26,63 @@ const detailLevel = useDetailLevel();
 const attrctrSelection = useAttractorSelection();
 
 const colors = ref([] as string[]);
-const coords = ref([] as Vec3D[]);
-const initColor = () =>
-  (colors.value = randomArray([pointNumber.value], () =>
-    randomColor(),
-  ) as string[]);
-const initCoords = () =>
-  (coords.value = randomArray([pointNumber.value, 3], () =>
-    randomNumber(-initRange.value, initRange.value),
-  ) as Vec3D[]);
-onMounted(() => {
-  initColor();
-  initCoords();
-});
-watchDebounced(
-  pointNumber,
-  () => {
-    initCoords();
-    initColor();
-  },
-  { debounce: 500, maxWait: 1000 },
-);
-onKeyStroke("r", initCoords);
+const rawCoords = ref(Float64Array.from([]) as Float64Array);
+const indices = ref(Array.from(Array(pointNumber.value).keys()));
 
-let attractor = getAttractor(attrctrSelection.value);
-watch(attrctrSelection, () => {
-  attractor = getAttractor(attrctrSelection.value);
-  initCoords();
-});
+const convertCoords = (i: number) => {
+  return [
+    rawCoords.value.at(3 * i),
+    rawCoords.value.at(3 * i + 1),
+    rawCoords.value.at(3 * i + 2),
+  ];
+};
 
-const { onLoop } = useRenderLoop();
-const [isPaused, togglePause] = useToggle(false);
-onKeyStroke(" ", () => togglePause());
-onLoop(({ delta, elapsed, clock }) => {
-  if (isPaused.value) return;
-  coords.value.forEach((coord, i) => {
-    coords.value[i] = RK4(coord, attractor, delta * timeSpeed.value);
+import init, { Attractor } from "attractors";
+onMounted(async () => {
+  await init();
+
+  const attractor = Attractor.new();
+  const getRawCoords = () => attractor.points() as unknown as Float64Array;
+  const getCoords = () => indices.value.map(convertCoords);
+  const getColors = () => attractor.colors() as unknown as string[];
+
+  // Initialize the attractor points
+  attractor.init_points(pointNumber.value, initRange.value);
+  rawCoords.value = getRawCoords();
+  attractor.init_colors(pointNumber.value);
+  colors.value = getColors();
+  watchDebounced(
+    pointNumber,
+    () => {
+      attractor.init_points(pointNumber.value, initRange.value);
+      rawCoords.value = getRawCoords();
+      attractor.init_colors(pointNumber.value);
+      colors.value = getColors();
+      indices.value = Array.from(Array(pointNumber.value).keys());
+    },
+    { debounce: 500, maxWait: 1000 },
+  );
+  onKeyStroke("r", () => {
+    attractor.init_points(pointNumber.value, initRange.value);
+    rawCoords.value = getRawCoords();
+  });
+
+  // Initialize the attractor system
+  attractor.set_system(attrctrSelection.value);
+  watch(attrctrSelection, () => {
+    attractor.set_system(attrctrSelection.value);
+    attractor.init_points(pointNumber.value, initRange.value);
+    rawCoords.value = getRawCoords();
+  });
+
+  // Main animation loop
+  const { onLoop } = useRenderLoop();
+  const [isPaused, togglePause] = useToggle(false);
+  onKeyStroke(" ", () => togglePause());
+  onLoop(({ delta, elapsed, clock }) => {
+    if (isPaused.value) return;
+    attractor.step(timeSpeed.value * delta);
+    rawCoords.value = getRawCoords();
   });
 });
 </script>

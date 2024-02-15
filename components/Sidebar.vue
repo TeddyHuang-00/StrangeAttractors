@@ -159,7 +159,7 @@
           <div class="flex flex-col gap-1">
             <TresLeches />
             <p class="text-sm text-gray-400">
-              Built with Nuxt and TresJS. Shared under MIT license.
+              Built with Nuxt, TresJS and Rust WASM. Shared under MIT license.
             </p>
           </div>
         </template>
@@ -187,19 +187,19 @@ const attractors: { value: nameAttractor; label: string }[] = [
     label: "Thomas",
   },
   {
-    value: "luchen",
+    value: "lu_chen",
     label: "Lu Chen",
   },
   {
-    value: "dequanli",
+    value: "dequan_li",
     label: "Dequan Li",
   },
   {
-    value: "newton",
+    value: "newton_leipnik",
     label: "Newton-Leipnik",
   },
   {
-    value: "nose",
+    value: "nose_hoover",
     label: "Nosé-Hoover",
   },
 ];

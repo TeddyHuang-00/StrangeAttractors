@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import wasmPack from "vite-plugin-wasm-pack";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
@@ -8,4 +10,10 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "nuxt-icon",
   ],
+  vite: {
+    plugins: [wasmPack("./attractors")],
+    optimizeDeps: {
+      exclude: ["attractors"],
+    },
+  },
 });

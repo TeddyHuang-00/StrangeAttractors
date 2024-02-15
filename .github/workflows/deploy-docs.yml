@@ -32,6 +32,11 @@ jobs:
         with:
           toolchain: stable
 
+      - name: Rust 缓存
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "./attractors -> pkg"
+
       - name: 安装 Bun
         uses: oven-sh/setup-bun@v1
 

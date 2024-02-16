@@ -42,30 +42,30 @@
       </defs>
     </svg>
 
-    <div class="w-[600px] pl-[100px]">
+    <div class="w-full">
       <p
         v-if="headline"
-        class="uppercase text-[24px] text-[#cdd6f4] mb-4 font-semibold"
+        class="mx-auto uppercase text-[24px] text-[#cdd6f4] mb-4 font-semibold text-center"
       >
         {{ headline }}
       </p>
       <h1
-        class="w-[600px] m-0 text-[75px] font-semibold mb-4 text-white flex items-center"
+        class="mx-auto text-center max-w-md text-[75px] font-semibold mb-4 text-white"
       >
-        <span>{{ title }}</span>
+        {{ title }}
       </h1>
-      <p class="text-[32px] text-[#E4E4E7] leading-tight">
+      <p
+        class="mx-auto text-center max-w-md text-[32px] text-[#E4E4E7] leading-tight"
+      >
         {{ description.slice(0, 200) }}
       </p>
     </div>
 
-    <div
-      class="absolute h-100vh w-[50vw] bottom-0 right-0 flex items-center justify-center"
-    >
+    <div class="absolute h-full w-full flex items-center justify-center">
       <Icon
         name="flowbite:atom-outline"
-        size="512"
-        class="text-white opacity-25 backdrop:blur-md"
+        size="1024"
+        class="text-black opacity-10 backdrop:blur-md mx-auto"
       />
     </div>
   </div>

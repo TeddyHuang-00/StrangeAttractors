@@ -20,6 +20,14 @@
           <div class="flex flex-row items-center gap-3 mb-2">
             <UAvatar src="https://github.com/TeddyHuang-00.png" alt="Avatar" />
             <b>TeddyHuang-00</b>
+            <span class="flex-grow"></span>
+            <UButton color="gray" class="p-1" @click="isOpen = false">
+              <Icon
+                name="material-symbols:close-rounded"
+                size="24"
+                class="m-0"
+              />
+            </UButton>
           </div>
           <p>
             Strange Attractors is a tiny project to visualize the strange
@@ -159,7 +167,7 @@
           <div class="flex flex-col gap-1">
             <TresLeches />
             <p class="text-sm text-gray-400">
-              Built with Nuxt, TresJS and Rust WASM. Shared under MIT license.
+              Built with Nuxt, TresJS and WASM. Shared under MIT license.
             </p>
           </div>
         </template>

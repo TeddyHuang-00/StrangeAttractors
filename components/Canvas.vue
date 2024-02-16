@@ -2,7 +2,7 @@
   <TresCanvas
     window-size
     preset="realistic"
-    class="absolute top-0 left-0"
+    class="absolute left-0 top-0"
     clear-color="#0f0f0f"
   >
     <Camera />

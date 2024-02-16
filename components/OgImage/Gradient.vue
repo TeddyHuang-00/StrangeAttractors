@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-full flex flex-col justify-center bg-[#1e1e2e]">
+  <div class="flex h-full w-full flex-col justify-center bg-[#1e1e2e]">
     <svg
-      class="absolute top-0 right-0"
+      class="absolute right-0 top-0"
       width="1200"
       height="675"
       viewBox="0 0 1200 675"
@@ -45,27 +45,27 @@
     <div class="w-full">
       <p
         v-if="headline"
-        class="mx-auto uppercase text-[24px] text-[#cdd6f4] mb-4 font-semibold text-center"
+        class="mx-auto mb-4 text-center text-[24px] font-semibold uppercase text-[#cdd6f4]"
       >
         {{ headline }}
       </p>
       <h1
-        class="mx-auto text-center max-w-md text-[75px] font-semibold mb-4 text-white"
+        class="mx-auto mb-4 max-w-md text-center text-[75px] font-semibold text-white"
       >
         {{ title }}
       </h1>
       <p
-        class="mx-auto text-center max-w-md text-[32px] text-[#E4E4E7] leading-tight"
+        class="mx-auto max-w-md text-center text-[32px] leading-tight text-[#E4E4E7]"
       >
         {{ description.slice(0, 200) }}
       </p>
     </div>
 
-    <div class="absolute h-full w-full flex items-center justify-center">
+    <div class="absolute flex h-full w-full items-center justify-center">
       <Icon
         name="flowbite:atom-outline"
         size="1024"
-        class="text-black opacity-10 backdrop:blur-md mx-auto"
+        class="mx-auto text-black opacity-10 backdrop:blur-md"
       />
     </div>
   </div>

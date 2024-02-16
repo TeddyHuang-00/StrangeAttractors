@@ -3,13 +3,13 @@
     <Icon
       name="material-symbols:chevron-left-rounded"
       size="64"
-      class="opacity-75 hover:opacity-100 hover:cursor-pointer mt-[50vh] -translate-y-1/2"
+      class="mt-[50vh] -translate-y-1/2 opacity-75 hover:cursor-pointer hover:opacity-100"
       @click="isOpen = true"
     />
 
     <USlideover v-model="isOpen" class="h-screen overflow-y-scroll">
       <UCard
-        class="flex flex-col flex-1"
+        class="flex flex-1 flex-col"
         :ui="{
           body: { base: 'flex-1' },
           ring: '',
@@ -17,7 +17,7 @@
         }"
       >
         <template #header>
-          <div class="flex flex-row items-center gap-3 mb-2">
+          <div class="mb-2 flex flex-row items-center gap-3">
             <UAvatar src="https://github.com/TeddyHuang-00.png" alt="Avatar" />
             <b>TeddyHuang-00</b>
             <span class="flex-grow"></span>
@@ -63,7 +63,7 @@
 
         <template class="flex flex-col space-y-4">
           <p>Choose an attractor</p>
-          <div class="space-y-1 grid grid-cols-2 gap-1">
+          <div class="grid grid-cols-2 gap-1 space-y-1">
             <URadio
               v-for="att of attractors"
               :key="att.value"

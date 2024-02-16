@@ -1,6 +1,6 @@
 # Strange Attractors Visualizer
 
-A web application for visualizing strange attractors using TresJS.
+A web application for visualizing strange attractors using TresJS and WASM.
 
 ## Attractors
 
@@ -98,6 +98,11 @@ A web application for visualizing strange attractors using TresJS.
   y_{n+1} &= y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4) \\
   \end{aligned}
   $$
+
+## Performance
+
+- [x] Refactor code to using Rust WebAssembly
+  - FPS boost up to 2x
 
 ## Setup
 

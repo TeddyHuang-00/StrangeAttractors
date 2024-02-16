@@ -21,7 +21,7 @@
             <UAvatar src="https://github.com/TeddyHuang-00.png" alt="Avatar" />
             <b>TeddyHuang-00</b>
             <span class="flex-grow"></span>
-            <UButton color="gray" class="p-1" @click="isOpen = false">
+            <UButton class="p-1" @click="isOpen = false">
               <Icon
                 name="material-symbols:close-rounded"
                 size="24"
@@ -62,95 +62,72 @@
         </template>
 
         <template class="flex flex-col space-y-4">
-          <URadioGroup
-            v-model="attrctrSelection"
-            :options="attractors"
-            color="gray"
-          >
+          <p>Choose an attractor</p>
+          <div class="space-y-1 grid grid-cols-2 gap-1">
+            <URadio
+              v-for="att of attractors"
+              :key="att.value"
+              v-model="attrctrSelection"
+              v-bind="att"
+            />
+          </div>
+          <!-- <URadioGroup v-model="attrctrSelection" :options="attractors" :ui="{
+            wrapper: 'relative grid grid-cols-2 gap-2 items-start',
+          }">
             <template #legend>
               <p class="text-base">Choose an attractor</p>
             </template>
-          </URadioGroup>
+          </URadioGroup> -->
           <UTooltip
             text="Time step size used in solver"
             :popper="{ placement: 'right', arrow: true }"
           >
             Timescale:
-            <UBadge color="gray" variant="solid" class="mx-1">
+            <UBadge variant="solid" class="mx-1">
               {{ timeSpeed }}
             </UBadge>
           </UTooltip>
-          <URange
-            :min="0.0"
-            :max="1.0"
-            v-model="timeSpeed"
-            :step="0.01"
-            color="gray"
-          />
+          <URange :min="0.0" :max="1.0" v-model="timeSpeed" :step="0.01" />
           <UTooltip
             text="Range of uniform distribution of initial points"
             :popper="{ placement: 'right', arrow: true }"
           >
             Initial range:
-            <UBadge color="gray" variant="solid" class="mx-1">
+            <UBadge variant="solid" class="mx-1">
               {{ initRange }}
             </UBadge>
           </UTooltip>
-          <URange
-            :min="1"
-            :max="100"
-            v-model="initRange"
-            :step="1"
-            color="gray"
-          />
+          <URange :min="1" :max="100" v-model="initRange" :step="1" />
           <UTooltip
             text="Number of points in the simulation"
             :popper="{ placement: 'right', arrow: true }"
           >
             Point number:
-            <UBadge color="gray" variant="solid" class="mx-1">
+            <UBadge variant="solid" class="mx-1">
               {{ pointNumber }}
             </UBadge>
           </UTooltip>
-          <URange
-            :min="10"
-            :max="10000"
-            v-model="pointNumber"
-            :step="10"
-            color="gray"
-          />
+          <URange :min="10" :max="10000" v-model="pointNumber" :step="10" />
           <UTooltip
             text="Sphere radius for each point"
             :popper="{ placement: 'right', arrow: true }"
           >
             Point size:
-            <UBadge color="gray" variant="solid" class="mx-1">
+            <UBadge variant="solid" class="mx-1">
               {{ pointSize }}
             </UBadge>
           </UTooltip>
-          <URange
-            :min="0.01"
-            :max="1"
-            v-model="pointSize"
-            :step="0.01"
-            color="gray"
-          />
+          <URange :min="0.01" :max="1" v-model="pointSize" :step="0.01" />
           <UTooltip
             text="Number of segments in the sphere for each point"
             :popper="{ placement: 'right', arrow: true }"
           >
             Detail level:
-            <UBadge color="gray" variant="solid" class="mx-1">
+            <UBadge variant="solid" class="mx-1">
               {{ detailLevel }}
             </UBadge>
           </UTooltip>
-          <URange
-            :min="3"
-            :max="16"
-            v-model="detailLevel"
-            :step="1"
-            color="gray"
-          />
+          <URange :min="3" :max="16" v-model="detailLevel" :step="1" />
 
           <UDivider>
             <Icon name="material-symbols:keyboard" size="24" />

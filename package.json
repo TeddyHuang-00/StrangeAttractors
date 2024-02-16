@@ -24,6 +24,7 @@
     "@tresjs/nuxt": "^2.1.1",
     "@vueuse/nuxt": "^10.7.2",
     "nuxt-icon": "^0.6.8",
+    "nuxt-og-image": "^3.0.0-rc.38",
     "vite-plugin-wasm-pack": "^0.1.12",
     "wasm-pack": "^0.12.1"
   }

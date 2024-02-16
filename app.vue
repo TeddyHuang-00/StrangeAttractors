@@ -1,27 +1,23 @@
 <template>
   <div>
-    <Head>
-      <Link rel="icon" sizes="64x64" href="favicon.ico" />
-      <Link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="favicon-32x32.png"
-      />
-      <Link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="favicon-16x16.png"
-      />
-      <Link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="apple-touch-icon.png"
-      />
-      <Link rel="manifest" href="site.webmanifest" />
-    </Head>
     <Canvas />
     <Sidebar />
   </div>
 </template>
+
+<script setup lang="ts">
+defineOgImage({
+  component: "Gradient",
+  props: {
+    title: "Strange Attractors",
+    description: "A collection & visualization of strange attractors",
+    headline: "TeddyHuang-00",
+  },
+});
+useSeoMeta({
+  title: "Strange Attractors",
+  ogTitle: "Strange Attractors",
+  description: "A collection & visualization of strange attractors",
+  ogDescription: "A collection & visualization of strange attractors",
+});
+</script>

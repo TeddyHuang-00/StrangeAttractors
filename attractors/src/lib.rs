@@ -164,7 +164,7 @@ impl Attractor {
         }
     }
     pub fn step(&mut self, dt: f64) {
-        let dt = dt.min(0.04); // limit the maximum dt to avoid numerical instability
+        let dt = dt.min(0.02); // limit the maximum dt to avoid numerical instability
         for i in 0..self.points.len() / 3 {
             let mut v = [
                 self.points[3 * i],

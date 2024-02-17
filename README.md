@@ -84,7 +84,7 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= -\gamma z - x \\
   \end{aligned}
   $$
-- [ ] Arneodo Attractor ($\alpha = -5.5, \beta = 3.5, \gamma = -1$)
+- [x] Arneodo Attractor ($\alpha = -5.5, \beta = 3.5, \gamma = -1$)
   $$
   \begin{aligned}
   \dot{x} &= y \\
@@ -92,7 +92,7 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= - \alpha x - \beta y - z + \gamma x^3 \\
   \end{aligned}
   $$
-- [ ] Sprott B Attractor ($\alpha = 0.4, \beta = 1.2, \gamma = 1$)
+- [x] Sprott B Attractor ($\alpha = 0.4, \beta = 1.2, \gamma = 1$)
   $$
   \begin{aligned}
   \dot{x} &= \alpha y z \\
@@ -100,7 +100,7 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= \gamma - x y \\
   \end{aligned}
   $$
-- [ ] Sprott-Linz F Attractor ($\alpha = 0.5$)
+- [x] Sprott-Linz F Attractor ($\alpha = 0.5$)
   $$
   \begin{aligned}
   \dot{x} &= y + z \\
@@ -108,7 +108,7 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= x^2 - z \\
   \end{aligned}
   $$
-- [ ] Dadras Attractor ($\alpha = 3, \beta = 2.7, \gamma = 1.7, \delta = 2, \varepsilon = 9$)
+- [x] Dadras Attractor ($\alpha = 3, \beta = 2.7, \gamma = 1.7, \delta = 2, \varepsilon = 9$)
   $$
   \begin{aligned}
   \dot{x} &= y - \alpha x + \beta y z \\

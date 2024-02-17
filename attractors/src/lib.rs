@@ -74,8 +74,74 @@ fn nose_hoover() -> Box<AttractorSystem> {
     Box::new(move |[x, y, z]| [y, -x + z * y, a - y * y])
 }
 
+fn halvorsen() -> Box<AttractorSystem> {
+    let a = 1.4;
+    Box::new(move |[x, y, z]| {
+        [
+            -a * x - 4.0 * y - 4.0 * z - y * y,
+            -a * y - 4.0 * z - 4.0 * x - z * z,
+            -a * z - 4.0 * x - 4.0 * y - x * x,
+        ]
+    })
+}
+
+fn chen_lee() -> Box<AttractorSystem> {
+    let a = 5.0;
+    let b = -10.0;
+    let c = -0.38;
+    Box::new(move |[x, y, z]| [a * x - y * z, b * y + x * z, c * z + x * y / 3.0])
+}
+
+fn bouali() -> Box<AttractorSystem> {
+    let a = 0.1;
+    let b = -0.1;
+    let u = 1.0;
+    Box::new(move |[x, y, z]| {
+        [
+            a * z - x * (1.0 - y),
+            y * (1.0 - x * x),
+            b * x - u * z * (1.0 - y),
+        ]
+    })
+}
+
+fn finance() -> Box<AttractorSystem> {
+    let a = 0.001;
+    let b = 0.2;
+    let c = 1.1;
+    Box::new(move |[x, y, z]| [(1.0 / b - a) * x + z + x * y, -b * y - x * x, -c * z - x])
+}
+
+fn arneodo() -> Box<AttractorSystem> {
+    let a = -5.5;
+    let b = 3.5;
+    let c = -1.0;
+    Box::new(move |[x, y, z]| [y, z, -a * x - b * y - z + c * x.powi(3)])
+}
+
+fn sprott_b() -> Box<AttractorSystem> {
+    let a = 0.4;
+    let b = 1.2;
+    let c = 1.0;
+    Box::new(move |[x, y, z]| [a * y * z, x - b * y, c - x * y])
+}
+
+fn sprott_linz_f() -> Box<AttractorSystem> {
+    let a = 0.5;
+    Box::new(move |[x, y, z]| [y + z, -x + a * y, x * x - z])
+}
+
+fn dadras() -> Box<AttractorSystem> {
+    let a = 3.0;
+    let b = 2.7;
+    let c = 1.7;
+    let d = 2.0;
+    let e = 9.0;
+    Box::new(move |[x, y, z]| [y - a * x + b * y * z, c * y - x * z + z, d * x * y - e * z])
+}
+
 #[wasm_bindgen]
-#[derive(Clone, Copy, PartialEq, EnumString)]
+#[derive(PartialEq, EnumString)]
 #[strum(serialize_all = "snake_case", ascii_case_insensitive)]
 pub enum AttractorName {
     Lorenz = "lorenz",
@@ -85,6 +151,14 @@ pub enum AttractorName {
     DequanLi = "dequan_li",
     NewtonLeipnik = "newton_leipnik",
     NoseHoover = "nose_hoover",
+    Halvorsen = "halvorsen",
+    ChenLee = "chen_lee",
+    Bouali = "bouali",
+    Finance = "finance",
+    Arneodo = "arneodo",
+    SprottB = "sprott_b",
+    SprottLinzF = "sprott_linz_f",
+    Dadras = "dadras",
 }
 
 #[wasm_bindgen]
@@ -158,6 +232,14 @@ impl Attractor {
                 AttractorName::DequanLi => dequan_li(),
                 AttractorName::NewtonLeipnik => newton_leipnik(),
                 AttractorName::NoseHoover => nose_hoover(),
+                AttractorName::Halvorsen => halvorsen(),
+                AttractorName::ChenLee => chen_lee(),
+                AttractorName::Bouali => bouali(),
+                AttractorName::Finance => finance(),
+                AttractorName::Arneodo => arneodo(),
+                AttractorName::SprottB => sprott_b(),
+                AttractorName::SprottLinzF => sprott_linz_f(),
+                AttractorName::Dadras => dadras(),
                 _ => lorenz(),
             },
             None => lorenz(),

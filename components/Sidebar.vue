@@ -187,6 +187,38 @@ const attractors: { value: nameAttractor; label: string }[] = [
     value: "nose_hoover",
     label: "Nosé-Hoover",
   },
+  {
+    value: "halvorsen",
+    label: "Halvorsen",
+  },
+  {
+    value: "chen_lee",
+    label: "Chen-Lee",
+  },
+  {
+    value: "bouali",
+    label: "Bouali",
+  },
+  {
+    value: "finance",
+    label: "Finance",
+  },
+  {
+    value: "arneodo",
+    label: "Arneodo",
+  },
+  {
+    value: "sprott_b",
+    label: "Sprott B",
+  },
+  {
+    value: "sprott_linz_f",
+    label: "Sprott-Linz F",
+  },
+  {
+    value: "dadras",
+    label: "Dadras",
+  },
 ];
 const attrctrSelection = useAttractorSelection();
 

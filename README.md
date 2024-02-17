@@ -52,7 +52,7 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= \alpha - y^2 \\
   \end{aligned}
   $$
-- [ ] Halvorsen Attractor ($\alpha = 1.4$)
+- [x] Halvorsen Attractor ($\alpha = 1.4$)
   $$
   \begin{aligned}
   \dot{x} &= -\alpha x - 4 y - 4 z - y^2 \\
@@ -60,7 +60,7 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= -\alpha z - 4 x - 4 y - x^2 \\
   \end{aligned}
   $$
-- [ ] Chen-Lee Attractor ($\alpha = 5, \beta = -10, \gamma = -0.38$)
+- [x] Chen-Lee Attractor ($\alpha = 5, \beta = -10, \gamma = -0.38$)
   $$
   \begin{aligned}
   \dot{x} &= \alpha x - y z \\
@@ -68,20 +68,52 @@ A web application for visualizing strange attractors using TresJS and WASM.
   \dot{z} &= \gamma z + \frac{1}{3} x y \\
   \end{aligned}
   $$
-- [ ] Bouali Attractor ($\alpha = 0.3, \beta = 10$)
+- [x] Bouali Attractor ($\alpha = 0.1, \beta = -0.1, \mu=1$)
   $$
   \begin{aligned}
-  \dot{x} &= x (4 - y) + \alpha z \\
-  \dot{y} &= -y (1 - x^2) \\
-  \dot{z} &= -x (1.5 - \beta z) - 0.05 z \\
+  \dot{x} &= \alpha z - x (1 - y) \\
+  \dot{y} &= y (1 - x^2) \\
+  \dot{z} &= \beta x - \mu z (1 - y) \\
   \end{aligned}
   $$
-- [ ] Finance Attractor ($\alpha = 0.001, \beta = 0.2, \gamma = 1.1$)
+- [x] Finance Attractor ($\alpha = 0.001, \beta = 0.2, \gamma = 1.1$)
   $$
   \begin{aligned}
   \dot{x} &= \left(\frac{1}{\beta} - \alpha\right) x + z + x y \\
   \dot{y} &= -\beta y - x^2 \\
   \dot{z} &= -\gamma z - x \\
+  \end{aligned}
+  $$
+- [ ] Arneodo Attractor ($\alpha = -5.5, \beta = 3.5, \gamma = -1$)
+  $$
+  \begin{aligned}
+  \dot{x} &= y \\
+  \dot{y} &= z \\
+  \dot{z} &= - \alpha x - \beta y - z + \gamma x^3 \\
+  \end{aligned}
+  $$
+- [ ] Sprott B Attractor ($\alpha = 0.4, \beta = 1.2, \gamma = 1$)
+  $$
+  \begin{aligned}
+  \dot{x} &= \alpha y z \\
+  \dot{y} &= x - \beta y \\
+  \dot{z} &= \gamma - x y \\
+  \end{aligned}
+  $$
+- [ ] Sprott-Linz F Attractor ($\alpha = 0.5$)
+  $$
+  \begin{aligned}
+  \dot{x} &= y + z \\
+  \dot{y} &= - x + \alpha y \\
+  \dot{z} &= x^2 - z \\
+  \end{aligned}
+  $$
+- [ ] Dadras Attractor ($\alpha = 3, \beta = 2.7, \gamma = 1.7, \delta = 2, \varepsilon = 9$)
+  $$
+  \begin{aligned}
+  \dot{x} &= y - \alpha x + \beta y z \\
+  \dot{y} &= \gamma y - x z + z \\
+  \dot{z} &= \delta x y - \varepsilon z \\
   \end{aligned}
   $$
 

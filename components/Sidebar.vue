@@ -82,7 +82,7 @@
             text="Time step size used in solver"
             :popper="{ placement: 'right', arrow: true }"
           >
-            Timescale:
+            Time speed:
             <UBadge variant="solid" class="mx-1">
               {{ timeSpeed }}
             </UBadge>
@@ -97,7 +97,7 @@
               {{ initRange }}
             </UBadge>
           </UTooltip>
-          <URange :min="1" :max="100" v-model="initRange" :step="1" />
+          <URange :min="0.1" :max="10" v-model="initRange" :step="0.1" />
           <UTooltip
             text="Number of points in the simulation"
             :popper="{ placement: 'right', arrow: true }"
@@ -158,68 +158,74 @@ import { useInitialRange } from "~/composables/useStates";
 
 const isOpen = ref(false);
 
-const attractors: { value: nameAttractor; label: string }[] = [
-  {
-    value: "lorenz",
-    label: "Lorenz",
-  },
-  {
-    value: "rossler",
-    label: "Rössler",
-  },
-  {
-    value: "thomas",
-    label: "Thomas",
-  },
-  {
-    value: "lu_chen",
-    label: "Lu Chen",
-  },
-  {
-    value: "dequan_li",
-    label: "Dequan Li",
-  },
-  {
-    value: "newton_leipnik",
-    label: "Newton-Leipnik",
-  },
-  {
-    value: "nose_hoover",
-    label: "Nosé-Hoover",
-  },
-  {
-    value: "halvorsen",
-    label: "Halvorsen",
-  },
-  {
-    value: "chen_lee",
-    label: "Chen-Lee",
-  },
-  {
-    value: "bouali",
-    label: "Bouali",
-  },
-  {
-    value: "finance",
-    label: "Finance",
-  },
-  {
-    value: "arneodo",
-    label: "Arneodo",
-  },
-  {
-    value: "sprott_b",
-    label: "Sprott B",
-  },
-  {
-    value: "sprott_linz_f",
-    label: "Sprott-Linz F",
-  },
-  {
-    value: "dadras",
-    label: "Dadras",
-  },
-];
+const attractors = useSorted(
+  [
+    {
+      value: "lorenz",
+      label: "Lorenz",
+    },
+    {
+      value: "rossler",
+      label: "Rössler",
+    },
+    {
+      value: "thomas",
+      label: "Thomas",
+    },
+    {
+      value: "lu_chen",
+      label: "Lu Chen",
+    },
+    {
+      value: "dequan_li",
+      label: "Dequan Li",
+    },
+    {
+      value: "newton_leipnik",
+      label: "Newton-Leipnik",
+    },
+    {
+      value: "nose_hoover",
+      label: "Nosé-Hoover",
+    },
+    {
+      value: "halvorsen",
+      label: "Halvorsen",
+    },
+    {
+      value: "chen_lee",
+      label: "Chen-Lee",
+    },
+    {
+      value: "bouali",
+      label: "Bouali",
+    },
+    {
+      value: "finance",
+      label: "Finance",
+    },
+    {
+      value: "arneodo",
+      label: "Arneodo",
+    },
+    {
+      value: "sprott_b",
+      label: "Sprott B",
+    },
+    {
+      value: "sprott_linz_f",
+      label: "Sprott-Linz F",
+    },
+    {
+      value: "dadras",
+      label: "Dadras",
+    },
+  ] as {
+    value: nameAttractor;
+    label: string;
+  }[],
+  (a, b) => a.label.localeCompare(b.label),
+);
 const attrctrSelection = useAttractorSelection();
 
 const timeSpeed = useTimeSpeed();

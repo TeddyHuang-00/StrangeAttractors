@@ -118,16 +118,6 @@
             </UBadge>
           </UTooltip>
           <URange :min="0.01" :max="1" v-model="pointSize" :step="0.01" />
-          <UTooltip
-            text="Number of segments in the sphere for each point"
-            :popper="{ placement: 'right', arrow: true }"
-          >
-            Detail level:
-            <UBadge variant="solid" class="mx-1">
-              {{ detailLevel }}
-            </UBadge>
-          </UTooltip>
-          <URange :min="3" :max="16" v-model="detailLevel" :step="1" />
 
           <UDivider>
             <Icon name="material-symbols:keyboard" size="24" />
@@ -232,7 +222,6 @@ const timeSpeed = useTimeSpeed();
 const initRange = useInitialRange();
 const pointNumber = usePointNumber();
 const pointSize = usePointSize();
-const detailLevel = useDetailLevel();
 
 const keyBindings = [
   {

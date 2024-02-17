@@ -3,7 +3,7 @@ mod utils;
 extern crate console_error_panic_hook;
 
 use strum::EnumString;
-use utils::{random_color, random_number};
+use utils::random_number;
 use wasm_bindgen::prelude::*;
 
 type AttractorSystem = dyn Fn([f64; 3]) -> [f64; 3];
@@ -164,7 +164,7 @@ pub enum AttractorName {
 #[wasm_bindgen]
 pub struct Attractor {
     points: Vec<f64>,
-    colors: Vec<String>,
+    colors: Vec<f64>,
     system: Box<AttractorSystem>,
 }
 
@@ -203,24 +203,18 @@ impl Attractor {
 
         Attractor {
             points: Vec::with_capacity(30_000),
-            colors: Vec::with_capacity(10_000),
+            colors: Vec::with_capacity(30_000),
             system: lorenz(),
         }
     }
 
     pub fn init_points(&mut self, n: usize, range: f64) {
         self.points.clear();
-        for _ in 0..n {
-            for __ in 0..3 {
-                self.points.push(random_number(-range, range));
-            }
-        }
+        (0..3 * n).for_each(|_| self.points.push(random_number(-range, range)));
     }
     pub fn init_colors(&mut self, n: usize) {
         self.colors.clear();
-        for _ in 0..n {
-            self.colors.push(random_color());
-        }
+        (0..3 * n).for_each(|_| self.colors.push(random_number(0.0, 1.0)));
     }
     pub fn set_system(&mut self, name: &str) {
         self.system = match AttractorName::from_str(name) {
@@ -247,22 +241,15 @@ impl Attractor {
     }
     pub fn step(&mut self, dt: f64) {
         let dt = dt.min(0.02); // limit the maximum dt to avoid numerical instability
-        for i in 0..self.points.len() / 3 {
-            let mut v = [
-                self.points[3 * i],
-                self.points[3 * i + 1],
-                self.points[3 * i + 2],
-            ];
-            v = self.solver(v, dt);
-            self.points[3 * i] = v[0];
-            self.points[3 * i + 1] = v[1];
-            self.points[3 * i + 2] = v[2];
-        }
+        (0..self.points.len()).step_by(3).for_each(|i| {
+            let v = self.solver(self.points[i..i + 3].try_into().unwrap(), dt);
+            self.points[i..i + 3].copy_from_slice(&v);
+        });
     }
-    pub fn points(&self) -> Vec<f64> {
-        self.points.clone()
+    pub fn points(&self) -> Vec<f32> {
+        self.points.iter().map(|x| *x as f32).collect()
     }
-    pub fn colors(&self) -> Vec<String> {
-        self.colors.clone()
+    pub fn colors(&self) -> Vec<f32> {
+        self.colors.iter().map(|x| *x as f32).collect()
     }
 }

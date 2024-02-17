@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Canvas />
+    <ClientOnly>
+      <Canvas />
+    </ClientOnly>
     <Sidebar />
   </div>
 </template>

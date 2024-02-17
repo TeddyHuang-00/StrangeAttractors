@@ -10,7 +10,13 @@
       <Axes />
       <TresPoints>
         <TresBufferGeometry :position="[rawCoords, 3]" :color="[colors, 3]" />
-        <TresPointsMaterial :size="pointSize" :vertexColors="true" />
+        <TresPointsMaterial
+          :size="pointSize"
+          :vertexColors="true"
+          :map="map"
+          :transparent="true"
+          :alpha-test="0.5"
+        />
       </TresPoints>
     </TresCanvas>
   </Suspense>
@@ -26,6 +32,10 @@ const attrctrSelection = useAttractorSelection();
 
 const colors = shallowRef(Float32Array.from([]) as Float32Array);
 const rawCoords = shallowRef(Float32Array.from([]) as Float32Array);
+
+const { map } = await useTexture({
+  map: "textures/disc.png",
+});
 
 import init, { Attractor } from "attractors";
 onMounted(async () => {

@@ -43,7 +43,6 @@ onMounted(async () => {
 
   const attractor = Attractor.new();
   const getRawCoords = () => attractor.points() as unknown as Float64Array;
-  const getCoords = () => indices.value.map(convertCoords);
   const getColors = () => attractor.colors() as unknown as string[];
 
   // Initialize the attractor points
@@ -76,9 +75,12 @@ onMounted(async () => {
   });
 
   // Main animation loop
-  const { onLoop } = useRenderLoop();
+  const { onLoop, pause, resume } = useRenderLoop();
   const [isPaused, togglePause] = useToggle(false);
-  onKeyStroke(" ", () => togglePause());
+  onKeyStroke(" ", () => {
+    togglePause();
+    isPaused.value ? pause() : resume();
+  });
   onLoop(({ delta, elapsed, clock }) => {
     if (isPaused.value) return;
     attractor.step(timeSpeed.value * delta);

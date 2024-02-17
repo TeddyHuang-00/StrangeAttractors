@@ -8,13 +8,10 @@
     >
       <Camera />
       <Axes />
-      <TresGroup v-if="rawCoords.length > 0">
-        <TresPoints>
-          <!-- <TresBufferGeometry :position="new THREE.BufferAttribute(rawCoords, 3)" /> -->
-          <TresBufferGeometry :position="[rawCoords, 3]" :color="[colors, 3]" />
-          <TresPointsMaterial :size="pointSize" :vertexColors="true" />
-        </TresPoints>
-      </TresGroup>
+      <TresPoints>
+        <TresBufferGeometry :position="[rawCoords, 3]" :color="[colors, 3]" />
+        <TresPointsMaterial :size="pointSize" :vertexColors="true" />
+      </TresPoints>
     </TresCanvas>
   </Suspense>
 </template>

@@ -71,13 +71,6 @@
               v-bind="att"
             />
           </div>
-          <!-- <URadioGroup v-model="attrctrSelection" :options="attractors" :ui="{
-            wrapper: 'relative grid grid-cols-2 gap-2 items-start',
-          }">
-            <template #legend>
-              <p class="text-base">Choose an attractor</p>
-            </template>
-          </URadioGroup> -->
           <UTooltip
             text="Time step size used in solver"
             :popper="{ placement: 'right', arrow: true }"
@@ -107,7 +100,7 @@
               {{ pointNumber }}
             </UBadge>
           </UTooltip>
-          <URange :min="10" :max="10000" v-model="pointNumber" :step="10" />
+          <URange :min="100" :max="100000" v-model="pointNumber" :step="100" />
           <UTooltip
             text="Sphere radius for each point"
             :popper="{ placement: 'right', arrow: true }"

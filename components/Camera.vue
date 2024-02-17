@@ -6,7 +6,6 @@
   />
   <OrbitControls />
   <TresAmbientLight v-light-helper />
-  <!-- <TresDirectionalLight v-light-helper /> -->
 </template>
 
 <script setup lang="ts"></script>

@@ -5,7 +5,7 @@
     :look-at="[0, 0, 0]"
   />
   <OrbitControls />
-  <TresAmbientLight v-light-helper />
+  <TresAmbientLight :intensity="100" />
 </template>
 
 <script setup lang="ts"></script>

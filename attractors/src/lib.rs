@@ -202,8 +202,8 @@ impl Attractor {
         console_error_panic_hook::set_once();
 
         Attractor {
-            points: Vec::with_capacity(30_000),
-            colors: Vec::with_capacity(30_000),
+            points: Vec::with_capacity(300_000),
+            colors: Vec::with_capacity(300_000),
             system: lorenz(),
         }
     }

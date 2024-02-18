@@ -155,9 +155,8 @@ k_1 &= f(y_n) \\
 k_2 &= f(y_n + \frac{h}{2}k_1) \\
 k_3 &= f(y_n + \frac{h}{2}k_2) \\
 k_4 &= f(y_n + hk_3) \\
-
-  y_{n+1} &= y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4) \\
-  \end{aligned}
+y_{n+1} &= y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4) \\
+\end{aligned}
 $$
 
 ## Performance

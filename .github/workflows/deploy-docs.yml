@@ -38,7 +38,7 @@ jobs:
           workspaces: "./attractors -> pkg"
 
       - name: 安装 Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
 
       - name: 安装依赖
         run: |

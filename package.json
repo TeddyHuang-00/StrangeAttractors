@@ -13,21 +13,21 @@
     "format": "prettier -w . && cargo fmt --manifest-path attractors/Cargo.toml --all -- --check"
   },
   "dependencies": {
-    "nuxt": "^3.10.3",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "nuxt": "^3.12.2",
+    "vue": "^3.4.30",
+    "vue-router": "^4.4.0"
   },
   "devDependencies": {
-    "@nuxt/ui": "^2.13.0",
-    "@nuxtjs/tailwindcss": "^6.11.4",
-    "@tresjs/cientos": "^3.8.0",
+    "@nuxt/ui": "^2.17.0",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "@tresjs/cientos": "^3.9.0",
     "@tresjs/leches": "^0.14.0",
     "@tresjs/nuxt": "^3.0.0",
-    "@vueuse/nuxt": "^10.9.0",
+    "@vueuse/nuxt": "^10.11.0",
     "nuxt-icon": "^0.6.10",
     "nuxt-og-image": "^3.0.0-rc.47",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.6.0",
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "vite-plugin-wasm-pack": "^0.1.12",
     "wasm-pack": "^0.12.1"
   }

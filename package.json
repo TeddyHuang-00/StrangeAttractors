@@ -20,7 +20,7 @@
   "devDependencies": {
     "@nuxt/ui": "^2.17.0",
     "@nuxtjs/tailwindcss": "^6.12.0",
-    "@tresjs/cientos": "^4.0.0",
+    "@tresjs/cientos": "^5.0.0",
     "@tresjs/leches": "^0.14.0",
     "@tresjs/nuxt": "^4.0.0",
     "@vueuse/nuxt": "^13.0.0",

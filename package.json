@@ -23,7 +23,7 @@
     "@tresjs/cientos": "^5.0.0",
     "@tresjs/leches": "^0.14.0",
     "@tresjs/nuxt": "^5.0.0",
-    "@vueuse/nuxt": "^13.0.0",
+    "@vueuse/nuxt": "^14.0.0",
     "nuxt-icon": "^0.6.10",
     "nuxt-og-image": "^3.0.0-rc.47",
     "prettier": "^3.3.2",

@@ -29,6 +29,6 @@
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.7.0",
     "vite-plugin-wasm-pack": "^0.1.12",
-    "wasm-pack": "^0.13.0"
+    "wasm-pack": "^0.14.0"
   }
 }
